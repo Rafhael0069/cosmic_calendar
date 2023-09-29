@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +12,11 @@ class Month extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final _controller = Provider.of<MonthsController>(context);
+    List<Map<String, dynamic>> calendar = _controller.getCalendar();
+
+    String month = calendar[index]['mes'];
 
     return Center(
       child: Card(
@@ -27,7 +33,7 @@ class Month extends StatelessWidget {
             height: 185,
             child: Padding(
               padding: EdgeInsets.all(8),
-              child: Text(_controller.months[index]),
+              child: Text(month),
             ),
           ),
         ),

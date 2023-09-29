@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cosmic_calendar/controllers/months_controller.dart';
 import 'package:cosmic_calendar/views/month_view_custom.dart';
 import 'package:cosmic_calendar/views/widgets/month.dart';
@@ -15,18 +17,20 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     final _controller = Provider.of<MonthsController>(context);
+    List months = _controller.getMonthsTitle();
 
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(16),
         child: GridView.builder(
-          itemCount: _controller.months.length,
+          itemCount: months.length,
           itemBuilder: (context, index) {
             return GestureDetector(
-              child: Month(index + 1),
+              child: Month(index),
               onTap: () {
+                _controller.currentMonthIndex = index;
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => MonthViewCustom(index + 1)));
+                    .push(MaterialPageRoute(builder: (context) => MonthViewCustom(index)));
               },
             );
           },
