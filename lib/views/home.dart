@@ -12,14 +12,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: ElevatedButton(
-            child: Text("Calendar"),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Calendar()));
-            },
-          ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Calendar"),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Calendar()));
+          },
         ),
       ),
     );

@@ -3,17 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../../controllers/months_controller.dart';
 
-class Month extends StatelessWidget {
-  final int index;
+class Day extends StatelessWidget {
 
-  const Month(this.index, {Key? key}) : super(key: key);
+  const Day( {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<MonthsController>(context);
-    List<Map<String, dynamic>> calendar = controller.getCalendar();
-
-    String month = calendar[index]['mes'];
 
     return Center(
       child: Card(
@@ -26,13 +21,25 @@ class Month extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(4)),
         ),
         child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 60,
+          width: MediaQuery.of(context).size.width - 20,
           child: Padding(
             padding: const EdgeInsets.only(left: 18, top: 8, bottom: 8),
-            child: Text(
-              month,
-              style: TextStyle(fontSize: 20,),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Dia 01',
+                  style: TextStyle(fontSize: 20,),
+                ),
+                Text(
+                  '01:00',
+                  style: TextStyle(fontSize: 14,),
+                ),
+                Text(
+                  '12:00',
+                  style: TextStyle(fontSize: 14,),
+                ),
+              ],
             ),
           ),
         ),

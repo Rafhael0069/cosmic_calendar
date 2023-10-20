@@ -13,7 +13,7 @@ class MonthsController = _MonthsController with _$MonthsController;
 
 abstract class _MonthsController with Store {
   _MonthsController() {
-    autorun((_){
+    autorun((_) {
       currentMonthData = getCurrentMonthData();
     });
 
@@ -89,103 +89,410 @@ abstract class _MonthsController with Store {
   Map<String, dynamic> currentMonthData = {};
 
   @observable
+  // List<Map<String, dynamic>> _calendar = [
+  //   {
+  //     "mes": "Janeiro",
+  //     "dados": {
+  //       "dia": "1",
+  //       "dados": {
+  //         "hora": "00:00:00",
+  //         "evento": {"titulo": "Big Bang", "descricao": "O início do universo conhecido."}
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Março",
+  //     "dados": {
+  //       "dia": "30",
+  //       "dados": {
+  //         "hora": null,
+  //         "evento": {
+  //           "titulo": "Formação da Via Láctea",
+  //           "descricao": "A Via Láctea, nossa galáxia, começa a se formar."
+  //         }
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Setembro",
+  //     "dados": {
+  //       "dia": "02",
+  //       "dados": {
+  //         "hora": null,
+  //         "evento": {
+  //           "titulo": "Formação da Terra",
+  //           "descricao": "Nosso planeta, a Terra, começa a se formar."
+  //         }
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Setembro",
+  //     "dados": {
+  //       "dia": "21",
+  //       "dados": {
+  //         "hora": null,
+  //         "evento": {"titulo": "Origem da Vida", "descricao": "A vida na Terra tem suas origens."}
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Desembro",
+  //     "dados": {
+  //       "dia": "30",
+  //       "dados": {
+  //         "hora": null,
+  //         "evento": {
+  //           "titulo": "Era dos Dinossauros",
+  //           "descricao": "Os dinossauros dominam a Terra."
+  //         }
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Desembro",
+  //     "dados": {
+  //       "dia": "31",
+  //       "dados": {
+  //         "hora": "23:59:50",
+  //         "evento": {
+  //           "titulo": "Extinção dos Dinossauros",
+  //           "descricao": "Os dinossauros são extintos por um evento cataclísmico."
+  //         }
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Desembro",
+  //     "dados": {
+  //       "dia": "31",
+  //       "dados": {
+  //         "hora": "23:59:58",
+  //         "evento": {
+  //           "titulo": "Aparição dos Humanos",
+  //           "descricao": "Os primeiros humanos modernos aparecem."
+  //         }
+  //       }
+  //     }
+  //   },
+  //   {
+  //     "mes": "Desembro",
+  //     "dados": {
+  //       "dia": "31",
+  //       "dados": {
+  //         "hora": "23:59:59",
+  //         "evento": {
+  //           "titulo": "Tempo Atual",
+  //           "descricao": "O tempo atual, representando o momento presente."
+  //         }
+  //       }
+  //     }
+  //   },
+  // ];
   List<Map<String, dynamic>> _calendar = [
     {
       "mes": "Janeiro",
       "dados": {
-        "dia": "1",
-        "dados": {
-          "hora": "00:00:00",
-          "evento": {"titulo": "Big Bang", "descricao": "O início do universo conhecido."}
+        "dias": {
+          {
+            "dia": "01",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "00:00:00",
+                  "evento": {"titulo": "Big Bang", "descricao": "O início do universo conhecido."}
+                }
+              }
+            }
+          }
         }
+      }
+    },
+    {
+      "mes": "Fevereiro",
+      "dados": {
+        "dias": {
+          {
+            "dia": "01",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "00:00:00",
+                  "evento": {
+                    "titulo": "Eventos cósmicos",
+                    "descricao": "Eventos cósmicos acontecendo."
+                  }
+                }
+              }
+            }
+          },
+          {
+            "dia": "15",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "12:00:00",
+                  "evento": {
+                    "titulo": "Formação de Estrelas",
+                    "descricao": "Nascimento de novas estrelas no cosmos."
+                  }
+                }
+              }
+            }
+          },
+        },
       }
     },
     {
       "mes": "Março",
       "dados": {
-        "dia": "30",
-        "dados": {
-          "hora": null,
-          "evento": {
-            "titulo": "Formação da Via Láctea",
-            "descricao": "A Via Láctea, nossa galáxia, começa a se formar."
+        "dias": {
+          {
+            "dia": "20",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "06:00:00",
+                  "evento": {
+                    "titulo": "Formação da Via Láctea",
+                    "descricao": "A Via Láctea, nossa galáxia, começa a se formar."
+                  }
+                }
+              }
+            }
           }
-        }
+        },
+      }
+    },
+    {
+      "mes": "Abril",
+      "dados": {
+        "dias": {
+          {
+            "dia": "10",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "10:30:00",
+                  "evento": {
+                    "titulo": "Formação de Sistemas Solares",
+                    "descricao": "Sistemas solares começam a se formar em nossa galáxia."
+                  }
+                }
+              }
+            }
+          }
+        },
+      }
+    },
+    {
+      "mes": "Maio",
+      "dados": {
+        "dias": {
+          {
+            "dia": "04",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "14:15:00",
+                  "evento": {
+                    "titulo": "Formação da Terra",
+                    "descricao": "Nosso planeta, a Terra, começa a se formar."
+                  }
+                }
+              }
+            }
+          }
+        },
+      }
+    },
+    {
+      "mes": "Junho",
+      "dados": {
+        "dias": {
+          {
+            "dia": "01",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "03:45:00",
+                  "evento": {
+                    "titulo": "Origem da Vida",
+                    "descricao": "A vida na Terra tem suas origens."
+                  }
+                }
+              }
+            }
+          }
+        },
+      }
+    },
+    {
+      "mes": "Julho",
+      "dados": {
+        "dias": {
+          {
+            "dia": "20",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "12:00:00",
+                  "evento": {
+                    "titulo": "Primeiros Organismos Multicelulares",
+                    "descricao": "Os primeiros organismos multicelulares evoluem."
+                  }
+                }
+              }
+            }
+          }
+        },
+      }
+    },
+    {
+      "mes": "Agosto",
+      "dados": {
+        "dias": {
+          {
+            "dia": "15",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "09:30:00",
+                  "evento": {
+                    "titulo": "Era dos Dinossauros",
+                    "descricao": "Os dinossauros dominam a Terra."
+                  }
+                }
+              }
+            }
+          }
+        },
       }
     },
     {
       "mes": "Setembro",
       "dados": {
-        "dia": "02",
-        "dados": {
-          "hora": null,
-          "evento": {
-            "titulo": "Formação da Terra",
-            "descricao": "Nosso planeta, a Terra, começa a se formar."
+        "dias": {
+          {
+            "dia": "02",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "14:00:00",
+                  "evento": {
+                    "titulo": "Extinção dos Dinossauros",
+                    "descricao": "Os dinossauros são extintos por um evento cataclísmico."
+                  }
+                }
+              }
+            }
+          },
+          {
+            "dia": "21",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "08:30:00",
+                  "evento": {
+                    "titulo": "Aparição dos Humanos",
+                    "descricao": "Os primeiros humanos modernos aparecem."
+                  }
+                }
+              }
+            }
           }
-        }
+        },
       }
     },
     {
-      "mes": "Setembro",
+      "mes": "Outubro",
       "dados": {
-        "dia": "21",
-        "dados": {
-          "hora": null,
-          "evento": {"titulo": "Origem da Vida", "descricao": "A vida na Terra tem suas origens."}
-        }
+        "dias": {
+          {
+            "dia": "10",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "15:45:00",
+                  "evento": {
+                    "titulo": "Desenvolvimento da Agricultura",
+                    "descricao": "Os humanos começam a praticar a agricultura."
+                  }
+                }
+              }
+            }
+          }
+        },
       }
     },
     {
-      "mes": "Desembro",
+      "mes": "Novembro",
       "dados": {
-        "dia": "30",
-        "dados": {
-          "hora": null,
-          "evento": {
-            "titulo": "Era dos Dinossauros",
-            "descricao": "Os dinossauros dominam a Terra."
+        "dias": {
+          {
+            "dia": "20",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "11:30:00",
+                  "evento": {
+                    "titulo": "Revolução Industrial",
+                    "descricao": "Início da Revolução Industrial."
+                  }
+                }
+              }
+            }
           }
-        }
+        },
       }
     },
     {
-      "mes": "Desembro",
+      "mes": "Dezembro",
       "dados": {
-        "dia": "31",
-        "dados": {
-          "hora": "23:59:50",
-          "evento": {
-            "titulo": "Extinção dos Dinossauros",
-            "descricao": "Os dinossauros são extintos por um evento cataclísmico."
-          }
-        }
-      }
-    },
-    {
-      "mes": "Desembro",
-      "dados": {
-        "dia": "31",
-        "dados": {
-          "hora": "23:59:58",
-          "evento": {
-            "titulo": "Aparição dos Humanos",
-            "descricao": "Os primeiros humanos modernos aparecem."
-          }
-        }
-      }
-    },
-    {
-      "mes": "Desembro",
-      "dados": {
-        "dia": "31",
-        "dados": {
-          "hora": "23:59:59",
-          "evento": {
-            "titulo": "Tempo Atual",
-            "descricao": "O tempo atual, representando o momento presente."
-          }
-        }
+        "dias": {
+          {
+            "dia": "30",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "10:00:00",
+                  "evento": {
+                    "titulo": "Era Espacial",
+                    "descricao": "Início da exploração espacial."
+                  }
+                }
+              }
+            }
+          },
+          {
+            "dia": "31",
+            "dados": {
+              "horas": {
+                {
+                  "hora": "23:59:50",
+                  "evento": {
+                    "titulo": "Descoberta de Exoplanetas",
+                    "descricao": "Primeiros exoplanetas são descobertos."
+                  }
+                },
+                {
+                  "hora": "23:59:58",
+                  "evento": {
+                    "titulo": "Colonização de Marte",
+                    "descricao": "Os humanos começam a colonizar Marte."
+                  }
+                },
+                {
+                  "hora": "23:59:59",
+                  "evento": {
+                    "titulo": "Tempo Atual",
+                    "descricao": "O tempo atual, representando o momento presente."
+                  }
+                },
+              }
+            }
+          },
+        },
       }
     },
   ];
@@ -203,10 +510,29 @@ abstract class _MonthsController with Store {
 
   @action
   List getMonthsTitle() {
-    List _titles = [];
-    _calendar.forEach((data) {
-      _titles.add(data['mes']);
-    });
-    return _titles;
+    List titles = [];
+    for (var data in _calendar) {
+      titles.add(data['mes']);
+    }
+    return titles;
+  }
+
+  @action
+  List getDias() {
+    List dias = [];
+    var mes = getCurrentMonthData();
+    for (var dia in mes['dados']['dias']) {
+      dias.add(dia);
+    }
+    return dias;
+  }
+
+  @action
+  List getHoras(var dia) {
+    List horas = [];
+    for (var hora in dia['dados']['horas']) {
+      horas.add(hora);
+    }
+    return horas;
   }
 }

@@ -18,8 +18,8 @@ class _MonthWithDaysWidgetState extends State<MonthWithDaysWidget> {
   @override
   Widget build(BuildContext context) {
 
-    final _controller = Provider.of<MonthsController>(context);
-    Map<String, dynamic> calendar = _controller.getCurrentMonthData();
+    final controller = Provider.of<MonthsController>(context);
+    Map<String, dynamic> calendar = controller.getCurrentMonthData();
 
     title = calendar['dados']['dados']['evento']['titulo'] ;
     description = calendar['dados']['dados']['evento']['descricao'] ;
@@ -27,17 +27,13 @@ class _MonthWithDaysWidgetState extends State<MonthWithDaysWidget> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            child: Text(
-              title!,
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
+          Text(
+            title!,
+            style: const TextStyle(fontSize: 20, color: Colors.black),
           ),
-          Container(
-            child: Text(
-              description!,
-              style: TextStyle(fontSize: 16, color: Colors.black),
-            ),
+          Text(
+            description!,
+            style: const TextStyle(fontSize: 16, color: Colors.black),
           ),
         ],
       ),

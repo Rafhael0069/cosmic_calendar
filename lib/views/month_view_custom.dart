@@ -1,4 +1,5 @@
-import 'package:cosmic_calendar/views/widgets/month_with_days_widget.dart';
+import 'package:cosmic_calendar/views/calendar.dart';
+import 'package:cosmic_calendar/views/widgets/day_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -33,32 +34,21 @@ class _MonthViewCustomState extends State<MonthViewCustom> {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = Provider.of<MonthsController>(context);
-    _controller.currentMonthIndex = _index;
-
-    Map<String, dynamic> calendar = _controller.getCurrentMonthData();
-
-    String monthTitle = calendar['mes'];
-    // var day = calendar['dados'];
-    // String dayTitle = day['dia'];
-    // var event = day['dados']['evento'];
-    // String eventTitle = event['titulo'];
-    // String eventDescription = event['descricao'];
-
-    // return MonthWithDays();
+    final controller = Provider.of<MonthsController>(context);
+    controller.currentMonthIndex = _index;
 
     return Scaffold(
       body: Column(
         children: [
           Container(
-            color: Color.fromRGBO(121, 115, 120, 0.2),
+            color: const Color.fromRGBO(121, 115, 120, 0.2),
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
                   child: Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Icon(
                       Icons.arrow_back_ios,
                       color: Colors.grey.shade600,
@@ -66,20 +56,20 @@ class _MonthViewCustomState extends State<MonthViewCustom> {
                     ),
                   ),
                   onTap: () {
-                    _controller.currentMonthIndex = _index--;
+                    controller.currentMonthIndex = _index--;
                     _pageController.previousPage(
-                        duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+                        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
                   },
                 ),
                 Observer(builder: (_) {
                   return Text(
-                    _controller.currentMonthData['mes'],
-                    style: TextStyle(fontSize: 24, color: Colors.black),
+                    controller.currentMonthData['mes'],
+                    style: const TextStyle(fontSize: 24, color: Colors.black),
                   );
                 }),
                 GestureDetector(
                   child: Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Icon(
                       Icons.arrow_forward_ios,
                       color: Colors.grey.shade600,
@@ -87,36 +77,75 @@ class _MonthViewCustomState extends State<MonthViewCustom> {
                     ),
                   ),
                   onTap: () {
-                    _controller.currentMonthIndex = _index++;
+                    controller.currentMonthIndex = _index++;
                     _pageController.nextPage(
-                        duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+                        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
                   },
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 600,
             child: PageView.builder(
               controller: _pageController,
-              itemCount: _controller.getCalendar().length,
-              itemBuilder: (context, index) {
-                _controller.currentMonthIndex = index;
-                return Container(
-                  child: Center(
-                    child: Column(children: [
-                      Text(
-                        "${_controller.getCurrentMonthData()['dados']['dados']['evento']['titulo']}", style: TextStyle(fontSize: 24),),
-                      Text(
-                        "${_controller.getCurrentMonthData()['dados']['dados']['evento']['descricao']}", style: TextStyle(fontSize: 20),),
-                    ],),
-                  ),
+              itemCount: controller.getCalendar().length,
+              itemBuilder: (context, indexMes) {
+                controller.currentMonthIndex = indexMes;
+                var dias = controller.getDias();
+                return ListView.builder(
+                  itemCount: dias.length,
+                  itemBuilder: (context, indexDia) {
+                    List horas = controller.getHoras(dias[indexDia]);
+                    // return Day();
+                    return Column(
+                      children: [
+                        Text(dias[indexDia]["dia"]),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: horas.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                Text(horas[index]["hora"]),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 );
+                // return Center(
+                //   child: Column(
+                //     children: [
+                //       Text(
+                //         "${controller.getCurrentMonthData()['dados']['dados']['evento']['titulo']}",
+                //         style: const TextStyle(fontSize: 24),
+                //       ),
+                //       Text(
+                //         "${controller.getCurrentMonthData()['dados']['dados']['evento']['descricao']}",
+                //         style: const TextStyle(fontSize: 20),
+                //       ),
+                //     ],
+                //   ),
+                // );
                 // return MonthWithDaysWidget();
               },
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (context) => const Calendar()));
+        },
+        child: const Icon(
+          Icons.calendar_month,
+          color: Colors.white,
+          size: 40,
+        ),
       ),
     );
   }
