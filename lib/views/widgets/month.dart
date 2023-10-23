@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../controllers/months_controller.dart';
 
 class Month extends StatelessWidget {
@@ -13,7 +12,7 @@ class Month extends StatelessWidget {
     final controller = Provider.of<MonthsController>(context);
     List<Map<String, dynamic>> calendar = controller.getCalendar();
 
-    String month = calendar[index]['mes'];
+    String month = calendar[index]['month'];
 
     return Center(
       child: Card(
@@ -32,12 +31,13 @@ class Month extends StatelessWidget {
             padding: const EdgeInsets.only(left: 18, top: 8, bottom: 8),
             child: Text(
               month,
-              style: TextStyle(fontSize: 20,),
+              style: const TextStyle(
+                fontSize: 20,
+              ),
             ),
           ),
         ),
       ),
     );
-    // return Center(child: Container(child: Center(child: Text(_controller.months[index])),color: Colors.blue,));
   }
 }

@@ -18,20 +18,22 @@ class _CalendarState extends State<Calendar> {
     List months = controller.getMonthsTitle();
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView.builder(
-          itemCount: months.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              child: Month(index),
-              onTap: () {
-                controller.currentMonthIndex = index;
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => MonthViewCustom(index)));
-              },
-            );
-          },
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: ListView.builder(
+            itemCount: months.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                child: Month(index),
+                onTap: () {
+                  controller.currentMonthIndex = index;
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => MonthViewCustom(index)));
+                },
+              );
+            },
+          ),
         ),
       ),
     );

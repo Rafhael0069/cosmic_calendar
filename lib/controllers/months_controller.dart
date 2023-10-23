@@ -1,11 +1,10 @@
 import 'package:mobx/mobx.dart';
-
 part 'months_controller.g.dart';
 
 /*
-Comdandos para rodar o build
+Comandos para rodar o build
 Gerar os arquivos -> dart run build_runner build
-Salvar as alterações automaticamento nos arquivos -> dart run build_runner watch
+Salvar as alternates automaticamento nos arquivos -> dart run build_runner watch
 Linpar os arquivos -> dart run build_runner clean
  */
 
@@ -16,71 +15,7 @@ abstract class _MonthsController with Store {
     autorun((_) {
       currentMonthData = getCurrentMonthData();
     });
-
-    // reaction((_) => currentMonthIndex, (_) {
-    //   currentMonthData = getCurrentMonthData();
-    // });
   }
-
-  // @observable
-  // ObservableMap months = ObservableMap<int, String>.of({
-  //   01: "Janeiro",
-  //   02: "Fevereiro",
-  //   03: "Março",
-  //   04: "Abril",
-  //   05: "Maio",
-  //   06: "Junho",
-  //   07: "Julho",
-  //   08: "Agosto",
-  //   09: "Setembro",
-  //   10: "Outubro",
-  //   11: "Novenbro",
-  //   12: "Dezembro"
-  // });
-
-  // @observable
-  // Map<String, dynamic> calendar = {
-  //   "BigBang": {
-  //     "evento": "Big Bang",
-  //     "data": "1 de janeiro, 00:00:00",
-  //     "descrição": "O início do universo conhecido."
-  //   },
-  //   "Formação da Via Láctea": {
-  //     "evento": "Formação da Via Láctea",
-  //     "data": "30 de março",
-  //     "descrição": "A Via Láctea, nossa galáxia, começa a se formar."
-  //   },
-  //   "Formação da Terra": {
-  //     "evento": "Formação da Terra",
-  //     "data": "2 de setembro",
-  //     "descrição": "Nosso planeta, a Terra, começa a se formar."
-  //   },
-  //   "Origem da Vida": {
-  //     "evento": "Origem da Vida",
-  //     "data": "21 de setembro",
-  //     "descrição": "A vida na Terra tem suas origens."
-  //   },
-  //   "Era dos Dinossauros": {
-  //     "evento": "Era dos Dinossauros",
-  //     "data": "30 de dezembro",
-  //     "descrição": "Os dinossauros dominam a Terra."
-  //   },
-  //   "Extinção dos Dinossauros": {
-  //     "evento": "Extinção dos Dinossauros",
-  //     "data": "31 de dezembro, 23:59:50",
-  //     "descrição": "Os dinossauros são extintos por um evento cataclísmico."
-  //   },
-  //   "Aparição dos Humanos": {
-  //     "evento": "Aparição dos Humanos",
-  //     "data": "31 de dezembro, 23:59:58",
-  //     "descrição": "Os primeiros humanos modernos aparecem."
-  //   },
-  //   "Tempo Atual": {
-  //     "evento": "Tempo Atual",
-  //     "data": "31 de dezembro, 23:59:59",
-  //     "descrição": "O tempo atual, representando o momento presente."
-  //   }
-  // };
 
   @observable
   int currentMonthIndex = 0;
@@ -89,118 +24,21 @@ abstract class _MonthsController with Store {
   Map<String, dynamic> currentMonthData = {};
 
   @observable
-  // List<Map<String, dynamic>> _calendar = [
-  //   {
-  //     "mes": "Janeiro",
-  //     "dados": {
-  //       "dia": "1",
-  //       "dados": {
-  //         "hora": "00:00:00",
-  //         "evento": {"titulo": "Big Bang", "descricao": "O início do universo conhecido."}
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Março",
-  //     "dados": {
-  //       "dia": "30",
-  //       "dados": {
-  //         "hora": null,
-  //         "evento": {
-  //           "titulo": "Formação da Via Láctea",
-  //           "descricao": "A Via Láctea, nossa galáxia, começa a se formar."
-  //         }
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Setembro",
-  //     "dados": {
-  //       "dia": "02",
-  //       "dados": {
-  //         "hora": null,
-  //         "evento": {
-  //           "titulo": "Formação da Terra",
-  //           "descricao": "Nosso planeta, a Terra, começa a se formar."
-  //         }
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Setembro",
-  //     "dados": {
-  //       "dia": "21",
-  //       "dados": {
-  //         "hora": null,
-  //         "evento": {"titulo": "Origem da Vida", "descricao": "A vida na Terra tem suas origens."}
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Desembro",
-  //     "dados": {
-  //       "dia": "30",
-  //       "dados": {
-  //         "hora": null,
-  //         "evento": {
-  //           "titulo": "Era dos Dinossauros",
-  //           "descricao": "Os dinossauros dominam a Terra."
-  //         }
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Desembro",
-  //     "dados": {
-  //       "dia": "31",
-  //       "dados": {
-  //         "hora": "23:59:50",
-  //         "evento": {
-  //           "titulo": "Extinção dos Dinossauros",
-  //           "descricao": "Os dinossauros são extintos por um evento cataclísmico."
-  //         }
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Desembro",
-  //     "dados": {
-  //       "dia": "31",
-  //       "dados": {
-  //         "hora": "23:59:58",
-  //         "evento": {
-  //           "titulo": "Aparição dos Humanos",
-  //           "descricao": "Os primeiros humanos modernos aparecem."
-  //         }
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "mes": "Desembro",
-  //     "dados": {
-  //       "dia": "31",
-  //       "dados": {
-  //         "hora": "23:59:59",
-  //         "evento": {
-  //           "titulo": "Tempo Atual",
-  //           "descricao": "O tempo atual, representando o momento presente."
-  //         }
-  //       }
-  //     }
-  //   },
-  // ];
+
   List<Map<String, dynamic>> _calendar = [
     {
-      "mes": "Janeiro",
-      "dados": {
-        "dias": {
+      "month": "Janeiro",
+      "data": {
+        "days": {
           {
-            "dia": "01",
-            "dados": {
-              "horas": {
+            "day": "01",
+            "data": {
+              "hours": {
                 {
-                  "hora": "00:00:00",
-                  "evento": {"titulo": "Big Bang", "descricao": "O início do universo conhecido."}
+                  "hour": "00:00:00",
+                  "event": {
+                    "title": "Big Bang",
+                    "description": "O início do universo conhecido."}
                 }
               }
             }
@@ -209,32 +47,32 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Fevereiro",
-      "dados": {
-        "dias": {
+      "month": "Fevereiro",
+      "data": {
+        "days": {
           {
-            "dia": "01",
-            "dados": {
-              "horas": {
+            "day": "01",
+            "data": {
+              "hours": {
                 {
-                  "hora": "00:00:00",
-                  "evento": {
-                    "titulo": "Eventos cósmicos",
-                    "descricao": "Eventos cósmicos acontecendo."
+                  "hour": "00:00:00",
+                  "event": {
+                    "title": "events cósmicos",
+                    "description": "events cósmicos acontecendo."
                   }
                 }
               }
             }
           },
           {
-            "dia": "15",
-            "dados": {
-              "horas": {
+            "day": "15",
+            "data": {
+              "hours": {
                 {
-                  "hora": "12:00:00",
-                  "evento": {
-                    "titulo": "Formação de Estrelas",
-                    "descricao": "Nascimento de novas estrelas no cosmos."
+                  "hour": "12:00:00",
+                  "event": {
+                    "title": "Formação de Estrelas",
+                    "description": "Nascimento de novas estrelas no cosmos."
                   }
                 }
               }
@@ -244,18 +82,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Março",
-      "dados": {
-        "dias": {
+      "month": "Março",
+      "data": {
+        "days": {
           {
-            "dia": "20",
-            "dados": {
-              "horas": {
+            "day": "20",
+            "data": {
+              "hours": {
                 {
-                  "hora": "06:00:00",
-                  "evento": {
-                    "titulo": "Formação da Via Láctea",
-                    "descricao": "A Via Láctea, nossa galáxia, começa a se formar."
+                  "hour": "06:00:00",
+                  "event": {
+                    "title": "Formação da Via Láctea",
+                    "description": "A Via Láctea, nossa galáxia, começa a se formar."
                   }
                 }
               }
@@ -265,18 +103,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Abril",
-      "dados": {
-        "dias": {
+      "month": "Abril",
+      "data": {
+        "days": {
           {
-            "dia": "10",
-            "dados": {
-              "horas": {
+            "day": "10",
+            "data": {
+              "hours": {
                 {
-                  "hora": "10:30:00",
-                  "evento": {
-                    "titulo": "Formação de Sistemas Solares",
-                    "descricao": "Sistemas solares começam a se formar em nossa galáxia."
+                  "hour": "10:30:00",
+                  "event": {
+                    "title": "Formação de Sistemas Solares",
+                    "description": "Sistemas solares começam a se formar em nossa galáxia."
                   }
                 }
               }
@@ -286,18 +124,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Maio",
-      "dados": {
-        "dias": {
+      "month": "Maio",
+      "data": {
+        "days": {
           {
-            "dia": "04",
-            "dados": {
-              "horas": {
+            "day": "04",
+            "data": {
+              "hours": {
                 {
-                  "hora": "14:15:00",
-                  "evento": {
-                    "titulo": "Formação da Terra",
-                    "descricao": "Nosso planeta, a Terra, começa a se formar."
+                  "hour": "14:15:00",
+                  "event": {
+                    "title": "Formação da Terra",
+                    "description": "Nosso planeta, a Terra, começa a se formar."
                   }
                 }
               }
@@ -307,18 +145,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Junho",
-      "dados": {
-        "dias": {
+      "month": "Junho",
+      "data": {
+        "days": {
           {
-            "dia": "01",
-            "dados": {
-              "horas": {
+            "day": "01",
+            "data": {
+              "hours": {
                 {
-                  "hora": "03:45:00",
-                  "evento": {
-                    "titulo": "Origem da Vida",
-                    "descricao": "A vida na Terra tem suas origens."
+                  "hour": "03:45:00",
+                  "event": {
+                    "title": "Origem da Vida",
+                    "description": "A vida na Terra tem suas origens."
                   }
                 }
               }
@@ -328,18 +166,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Julho",
-      "dados": {
-        "dias": {
+      "month": "Julho",
+      "data": {
+        "days": {
           {
-            "dia": "20",
-            "dados": {
-              "horas": {
+            "day": "20",
+            "data": {
+              "hours": {
                 {
-                  "hora": "12:00:00",
-                  "evento": {
-                    "titulo": "Primeiros Organismos Multicelulares",
-                    "descricao": "Os primeiros organismos multicelulares evoluem."
+                  "hour": "12:00:00",
+                  "event": {
+                    "title": "Primeiros Organismos Multicelulares",
+                    "description": "Os primeiros organismos multicelulares evoluem."
                   }
                 }
               }
@@ -349,18 +187,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Agosto",
-      "dados": {
-        "dias": {
+      "month": "Agosto",
+      "data": {
+        "days": {
           {
-            "dia": "15",
-            "dados": {
-              "horas": {
+            "day": "15",
+            "data": {
+              "hours": {
                 {
-                  "hora": "09:30:00",
-                  "evento": {
-                    "titulo": "Era dos Dinossauros",
-                    "descricao": "Os dinossauros dominam a Terra."
+                  "hour": "09:30:00",
+                  "event": {
+                    "title": "Era dos Dinossauros",
+                    "description": "Os dinossauros dominam a Terra."
                   }
                 }
               }
@@ -370,32 +208,32 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Setembro",
-      "dados": {
-        "dias": {
+      "month": "Setembro",
+      "data": {
+        "days": {
           {
-            "dia": "02",
-            "dados": {
-              "horas": {
+            "day": "02",
+            "data": {
+              "hours": {
                 {
-                  "hora": "14:00:00",
-                  "evento": {
-                    "titulo": "Extinção dos Dinossauros",
-                    "descricao": "Os dinossauros são extintos por um evento cataclísmico."
+                  "hour": "14:00:00",
+                  "event": {
+                    "title": "Extinção dos Dinossauros",
+                    "description": "Os dinossauros são extintos por um event cataclísmico."
                   }
                 }
               }
             }
           },
           {
-            "dia": "21",
-            "dados": {
-              "horas": {
+            "day": "21",
+            "data": {
+              "hours": {
                 {
-                  "hora": "08:30:00",
-                  "evento": {
-                    "titulo": "Aparição dos Humanos",
-                    "descricao": "Os primeiros humanos modernos aparecem."
+                  "hour": "08:30:00",
+                  "event": {
+                    "title": "Aparição dos Humanos",
+                    "description": "Os primeiros humanos modernos aparecem."
                   }
                 }
               }
@@ -405,18 +243,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Outubro",
-      "dados": {
-        "dias": {
+      "month": "Outubro",
+      "data": {
+        "days": {
           {
-            "dia": "10",
-            "dados": {
-              "horas": {
+            "day": "10",
+            "data": {
+              "hours": {
                 {
-                  "hora": "15:45:00",
-                  "evento": {
-                    "titulo": "Desenvolvimento da Agricultura",
-                    "descricao": "Os humanos começam a praticar a agricultura."
+                  "hour": "15:45:00",
+                  "event": {
+                    "title": "Desenvolvimento da Agricultura",
+                    "description": "Os humanos começam a praticar a agricultura."
                   }
                 }
               }
@@ -426,18 +264,18 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Novembro",
-      "dados": {
-        "dias": {
+      "month": "Novembro",
+      "data": {
+        "days": {
           {
-            "dia": "20",
-            "dados": {
-              "horas": {
+            "day": "20",
+            "data": {
+              "hours": {
                 {
-                  "hora": "11:30:00",
-                  "evento": {
-                    "titulo": "Revolução Industrial",
-                    "descricao": "Início da Revolução Industrial."
+                  "hour": "11:30:00",
+                  "event": {
+                    "title": "Revolução Industrial",
+                    "description": "Início da Revolução Industrial."
                   }
                 }
               }
@@ -447,46 +285,46 @@ abstract class _MonthsController with Store {
       }
     },
     {
-      "mes": "Dezembro",
-      "dados": {
-        "dias": {
+      "month": "Dezembro",
+      "data": {
+        "days": {
           {
-            "dia": "30",
-            "dados": {
-              "horas": {
+            "day": "30",
+            "data": {
+              "hours": {
                 {
-                  "hora": "10:00:00",
-                  "evento": {
-                    "titulo": "Era Espacial",
-                    "descricao": "Início da exploração espacial."
+                  "hour": "10:00:00",
+                  "event": {
+                    "title": "Era Espacial",
+                    "description": "Início da exploração espacial."
                   }
                 }
               }
             }
           },
           {
-            "dia": "31",
-            "dados": {
-              "horas": {
+            "day": "31",
+            "data": {
+              "hours": {
                 {
-                  "hora": "23:59:50",
-                  "evento": {
-                    "titulo": "Descoberta de Exoplanetas",
-                    "descricao": "Primeiros exoplanetas são descobertos."
+                  "hour": "23:59:50",
+                  "event": {
+                    "title": "Descoberta de Exoplanetas",
+                    "description": "Primeiros exoplanetas são descobertos."
                   }
                 },
                 {
-                  "hora": "23:59:58",
-                  "evento": {
-                    "titulo": "Colonização de Marte",
-                    "descricao": "Os humanos começam a colonizar Marte."
+                  "hour": "23:59:58",
+                  "event": {
+                    "title": "Colonização de Marte",
+                    "description": "Os humanos começam a colonizar Marte."
                   }
                 },
                 {
-                  "hora": "23:59:59",
-                  "evento": {
-                    "titulo": "Tempo Atual",
-                    "descricao": "O tempo atual, representando o momento presente."
+                  "hour": "23:59:59",
+                  "event": {
+                    "title": "Tempo Atual",
+                    "description": "O tempo atual, representando o momento presente."
                   }
                 },
               }
@@ -512,27 +350,27 @@ abstract class _MonthsController with Store {
   List getMonthsTitle() {
     List titles = [];
     for (var data in _calendar) {
-      titles.add(data['mes']);
+      titles.add(data['month']);
     }
     return titles;
   }
 
   @action
-  List getDias() {
-    List dias = [];
-    var mes = getCurrentMonthData();
-    for (var dia in mes['dados']['dias']) {
-      dias.add(dia);
+  List getDays() {
+    List days = [];
+    var month = getCurrentMonthData();
+    for (var day in month['data']['days']) {
+      days.add(day);
     }
-    return dias;
+    return days;
   }
 
   @action
-  List getHoras(var dia) {
-    List horas = [];
-    for (var hora in dia['dados']['horas']) {
-      horas.add(hora);
+  List getHours(var day) {
+    List hours = [];
+    for (var hour in day['data']['hours']) {
+      hours.add(hour);
     }
-    return horas;
+    return hours;
   }
 }
